@@ -1,0 +1,6 @@
+name: lit-miner
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+prefix: /opt/homebrew/Caskroom/miniconda/base/envs/lit-miner
