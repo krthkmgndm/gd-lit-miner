@@ -4,7 +4,13 @@ from pathlib import Path
 import pandas as pd
 import spacy
 
-from .utils.constants import PROCESSED_DATA_DIR, RAW_DATA_DIR, TEXT_FILE_PATTERN
+from .utils.constants import (
+    MAX_SENTENCE_LENGTH,
+    MIN_SENTENCE_LENGTH,
+    PROCESSED_DATA_DIR,
+    RAW_DATA_DIR,
+    TEXT_FILE_PATTERN,
+)
 
 
 class DataPreprocessor:
@@ -34,6 +40,7 @@ class DataPreprocessor:
         return [sent.text.strip() for sent in doc.sents]
 
     def process_documents(self, documents):
+        """Process documents and convert to structured format."""
         processed_data = []
 
         for doc in documents:
@@ -41,8 +48,14 @@ class DataPreprocessor:
             sentences = self.extract_sentences(clean_text)
 
             for sent in sentences:
-                processed_data.append(
-                    {"file_name": doc["file_name"], "sentence": sent, "processed": True}
-                )
+                # Filter sentences based on length constraints
+                if MIN_SENTENCE_LENGTH <= len(sent.split()) <= MAX_SENTENCE_LENGTH:
+                    processed_data.append(
+                        {
+                            "file_name": doc["file_name"],
+                            "sentence": sent,
+                            "processed": True,
+                        }
+                    )
 
         return pd.DataFrame(processed_data)

@@ -2,13 +2,7 @@ import numpy as np
 import torch
 from transformers import AutoModel, AutoTokenizer
 
-from .utils.constants import (
-    CUDA_BATCH_SIZE,
-    EMBEDDING_SIZE,
-    MAX_SEQ_LENGTH,
-    MODEL_NAME,
-    MPS_BATCH_SIZE,
-)
+from .utils.constants import CUDA_BATCH_SIZE, MAX_SEQ_LENGTH, MODEL_NAME, MPS_BATCH_SIZE
 from .utils.silicon_optimizer import M2Optimizer
 
 

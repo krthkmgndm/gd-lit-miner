@@ -27,3 +27,13 @@ RAW_DATA_DIR = DATA_DIR / "raw"
 PROCESSED_DATA_DIR = DATA_DIR / "processed"
 GENERATED_DATA_DIR = DATA_DIR / "generated"
 REPORTS_DIR = PROJECT_ROOT / "reports"
+
+# File patterns
+TEXT_FILE_PATTERN = "*.txt"
+CSV_FILE_PATTERN = "*.csv"
+
+# Visualization constants
+GENE_NODE_COLOR = "#1f77b4"  # blue
+DISEASE_NODE_COLOR = "#d62728"  # red
+DEFAULT_FIGURE_WIDTH = 1200
+DEFAULT_FIGURE_HEIGHT = 800
